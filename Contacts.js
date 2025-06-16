@@ -23,8 +23,9 @@ document.getElementById("contactForm").addEventListener("submit", (e) => {
     }
 
     if (errors.length > 0) {
+        e.preventDefault()
         alert(errors.join("\n"));
     } else {
-        alert("Формата е успешно валидирана и готова за изпращане.");
+
     }
 });
