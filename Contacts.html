@@ -35,7 +35,7 @@
 
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <form id="contactForm" action="https://formspree.io/f/xdkzzbrq" method="POST">
+        <form id="contactForm" method="POST" name="contact" data-netlify="true" action="/Thanks.html">
           <div class="mb-3">
             <label for="name" class="form-label">Име</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Вашето име">
@@ -48,7 +48,7 @@
             <label for="message" class="form-label">Съобщение</label>
             <textarea class="form-control" id="message" rows="4" name="message" placeholder="Вашето съобщение"></textarea>
           </div>
-          <input type="hidden" name="_redirect" value="https://trackerv2.netlify.app/Thanks.html">
+          <input type="hidden" name="form-name" value="contact">
           <button type="submit" class="btn btn-light w-100">Изпрати</button>
         </form>
       </div>
