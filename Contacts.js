@@ -1,5 +1,4 @@
-document.getElementById("contactForm").addEventListener("submit", (e) => {
-
+document.getElementById("contactForm").addEventListener("submit", function (e) {
     const name    = document.getElementById("name").value.trim();
     const email   = document.getElementById("email").value.trim();
     const message = document.getElementById("message").value.trim();
@@ -10,22 +9,22 @@ document.getElementById("contactForm").addEventListener("submit", (e) => {
     if (!email)   errors.push("Моля, въведете имейл адрес.");
     if (!message) errors.push("Моля, въведете съобщение.");
 
-    if (name && name.length < 3) {
+    if (name.length < 3) {
         errors.push("Името трябва да е поне 3 символа.");
     }
-    if (message && message.length < 10) {
+
+    if (message.length < 10) {
         errors.push("Съобщението трябва да е поне 10 символа.");
     }
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (email && !emailPattern.test(email)) {
+    if (!emailPattern.test(email)) {
         errors.push("Моля, въведете валиден имейл адрес.");
     }
 
     if (errors.length > 0) {
-        e.preventDefault()
+        e.preventDefault();
         alert(errors.join("\n"));
-    } else {
-
     }
+
 });
