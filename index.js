@@ -4,5 +4,12 @@
 //      accountID - KBWbUr2neWaDosVgA6p47FMAzsTcvRT-MQIqMTUwJKEcb2o
 //      puuid Stelko - IAzrrG-MK7iraOnkwf95JfgCSuYaMb4Qy5GOumBXtDa0qisPigXChlJ9WzLeGsyBwcpyvDqH2aKdDA
 
-console.log('Happy developing ✨')
-console.log("dasda");
+anime({
+    targets: '#title',
+    translateY: [-200, 0],
+    opacity: [0, 1],
+    duration: 1000,
+    easing: 'easeOutExpo',
+
+});
+

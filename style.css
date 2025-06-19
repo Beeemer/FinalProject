@@ -1,24 +1,27 @@
-/* Reset стилове */
+#title{
+    font-size: 50px;
+    opacity: 0;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Основни цветове и фон */
 body {
     font-family: 'Segoe UI', sans-serif;
-    background-color: #121212; /* почти черно */
-    color: #ffffff;            /* бял текст */
+    background-color: #121212;
+    color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-/* Контейнер за формата */
+
 form {
-    background-color: #1e1e1e;  /* тъмно сиво */
+    background-color: #1e1e1e;
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
@@ -26,7 +29,7 @@ form {
     max-width: 400px;
 }
 
-/* Заглавие */
+
 form h2 {
     margin-bottom: 20px;
     text-align: center;
@@ -46,7 +49,6 @@ input[type="email"]{
     border-radius: 6px;
 }
 
-/* Стил за бутона */
 button {
     width: 100%;
     padding: 12px;
@@ -78,7 +80,7 @@ footer {
     text-align: center;
     font-size: 0.9em;
     border-top: 1px solid #333;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 .footer-content {
@@ -87,7 +89,8 @@ footer {
 }
 
 .footer-links {
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 .footer-links a {
@@ -130,4 +133,6 @@ footer {
     button {
         background-color: #FFFFFFFF;
     }
+
 }
+
