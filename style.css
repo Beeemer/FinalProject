@@ -135,4 +135,26 @@ footer {
     }
 
 }
+.card {
+    background-color: #3a3939;
+    border-color: #434343;
+}
+.card:hover {
+    border-color: #787373;
+}
+.card button {
+     background-color: #3a3939;
+    border-color: #3a3939;
+}
+.card button:hover {
+    background-color: #3a3939;
+    border-color: #3a3939;
+    color: #2c2c2c;
+}
+.card button:active {
+    background-color: #3a3939 !important;
+    border-color: #3a3939 !important;
+}
+
+
 
