@@ -156,5 +156,13 @@ footer {
     border-color: #3a3939 !important;
 }
 
+#infoCardContainer {
+    max-width: 100%;
+    overflow-x: hidden;
+    flex-wrap: wrap;
+}
+
+
+
 
 
