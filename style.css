@@ -167,7 +167,9 @@ footer {
     overflow-x: hidden;
     flex-wrap: wrap;
 }
-
+body {
+    padding-bottom: 80px;
+}
 
 
 
