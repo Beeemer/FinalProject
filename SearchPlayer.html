@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search</title>
     <link href="    https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
@@ -31,21 +32,31 @@
         </div>
     </nav>
 
-    <div class="row justify-content-center">
-        <div class="col-lg">
-            <form id="summonerForm">
-                <div class="md-3">
-                    <label for="summonerName" class="form-label">Summoner Name:</label>
-                    <input type="text" class="form-control" id="summonerName" name="summonerName" placeholder="Summoner Name" required autocomplete="off">
-                </div>
-                <div class="md-3">
-                    <label for="summonerTag" class="form-label">Summoner Tag:</label>
-                    <input type="text" class="form-control" id="summonerTag" name="summonerTag" placeholder="#XXXX" required maxlength="5" autocomplete="off">
-                </div>
-                <button type="submit" class="btn btn-light w-100">Search</button>
-            </form>
+    <div class="container mt-5 pt-5">
+        <div class="row justify-content-center" id="formRow">
+            <div class="col-12 col-lg-4 mb-4" id="formDiv">
+                <form id="summonerForm">
+                    <div class="md-3">
+                        <label for="summonerName" class="form-label">Summoner Name:</label>
+                        <input type="text" class="form-control" id="summonerName" name="summonerName" placeholder="Summoner Name" required autocomplete="off">
+                    </div>
+                    <div class="md-3">
+                        <label for="summonerTag" class="form-label">Summoner Tag:</label>
+                        <input type="text" class="form-control" id="summonerTag" name="summonerTag" placeholder="#XXXX" required maxlength="5" autocomplete="off">
+                    </div>
+                    <div class="md-3">
+                        <label for="region" class="form-label">Summoner Region:</label>
+                        <select class="form-select" id="region" name="region" required>
+                            <option value="eun1">EUNE</option>
+                            <option value="euw1">EUW</option>
+                            <option value="na1">NA</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-light w-100">Search</button>
+                </form>
 
-            <div id="errorBox" class="text-danger mt-2"></div>
+                <div id="errorBox" class="text-danger mt-2"></div>
+            </div>
         </div>
     </div>
 
