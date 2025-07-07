@@ -23,6 +23,8 @@ form.addEventListener("submit", async function (event) {
     }
 
     errorBox.innerHTML = "";
+    sessionStorage.setItem("name", name);
+    sessionStorage.setItem("tag", tag);
 
     setDisplay();
 
@@ -54,6 +56,11 @@ async function searchSummoner(name, tag, selectedRegion) {
 function displaySummonerStats(data) {
     const soloCol = document.getElementById("soloQ");
     const flexCol = document.getElementById("flexQ");
+    const title = document.getElementById("accountTitle");
+
+    const name = sessionStorage.getItem("name");
+    const tag = sessionStorage.getItem("tag");
+    title.innerHTML += " " + name + "#" + tag;
 
     let soloData = data.find(q => q.queueType === "RANKED_SOLO_5x5");
     let flexData = data.find(q => q.queueType === "RANKED_FLEX_SR");
@@ -122,7 +129,8 @@ function setDisplay() {
 
     const title = document.createElement("h5");
     title.setAttribute("class", "card-title");
-    title.textContent = "Account Info";
+    title.setAttribute("id", "accountTitle");
+    title.textContent = "Account Info:";
 
     const infoRow = document.createElement("div");
     infoRow.setAttribute("class", "row");
