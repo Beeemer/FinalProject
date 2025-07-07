@@ -1,6 +1,5 @@
 const form = document.getElementById("summonerForm");
 const errorBox = document.getElementById("errorBox");
-const formDiv = document.getElementById("formDiv");
 
 
 form.addEventListener("submit", async function (event) {
@@ -24,13 +23,12 @@ form.addEventListener("submit", async function (event) {
     }
 
     errorBox.innerHTML = "";
-    sessionStorage.setItem("gameName", name);
-    sessionStorage.setItem("gameTag", tag);
-    sessionStorage.setItem("gameRegion", selectedRegion);
 
     setDisplay();
 
     await searchSummoner(name, tag, selectedRegion);
+
+    form.reset();
 })
 
 async function searchSummoner(name, tag, selectedRegion) {
@@ -54,31 +52,68 @@ async function searchSummoner(name, tag, selectedRegion) {
 }
 
 function displaySummonerStats(data) {
-    //  тук ще показваме статовете на акаунта
-    // form.remove();
-    // errorBox.remove();
+    const soloCol = document.getElementById("soloQ");
+    const flexCol = document.getElementById("flexQ");
 
-    // const newP = document.createElement("p");
-    // newP.innerText = `Summoner ID: ${data[0].queueType || "Не е намерен"}`;
-    // document.body.appendChild(newP);
+    let soloData = data.find(q => q.queueType === "RANKED_SOLO_5x5");
+    let flexData = data.find(q => q.queueType === "RANKED_FLEX_SR");
+
+    if (soloData) {
+        const soloQRank = document.createElement("p");
+        const soloQPoints = document.createElement("p");
+        const soloQWins = document.createElement("p");
+        const soloQLosses = document.createElement("p");
+        const soloQWR = document.createElement("p");
+
+        soloQRank.textContent = soloData.tier + " " + soloData.rank;
+        soloQPoints.textContent = soloData.leaguePoints + " LP";
+        soloQWins.textContent = "Wins: " + soloData.wins;
+        soloQLosses.textContent = "Losses: " + soloData.losses;
+        soloQWR.textContent = "WR: " + Math.round((soloData.wins / (soloData.wins + soloData.losses)) * 100).toFixed(1) + "%";
+
+        soloCol.append(soloQRank, soloQPoints, soloQWins, soloQLosses, soloQWR);
+    }
+
+    if (flexData) {
+        const flexQRank = document.createElement("p");
+        const flexQPoints = document.createElement("p");
+        const flexQWins = document.createElement("p");
+        const flexQLosses = document.createElement("p");
+        const flexQWR = document.createElement("p");
+
+        flexQRank.textContent = flexData.tier + " " + flexData.rank;
+        flexQPoints.textContent = flexData.leaguePoints + " LP";
+        flexQWins.textContent = "Wins: " + flexData.wins;
+        flexQLosses.textContent = "Losses: " + flexData.losses;
+        flexQWR.textContent = "WR: " + Math.round((flexData.wins / (flexData.wins + flexData.losses)) * 100).toFixed(1) + "%";
+
+        flexCol.append(flexQRank, flexQPoints, flexQWins, flexQLosses, flexQWR);
+    }
+
+    if (!soloData && !flexData) {
+        soloCol.innerHTML = "<p>Няма намерени рангове.</p>";
+        flexCol.innerHTML = "";
+    }
 }
+
 
 function setDisplay() {
     const errorBox = document.getElementById("errorBox");
     if (errorBox) errorBox.remove();
 
-    if (document.getElementById("displayInfo")) return;
+    const existingDisplay = document.getElementById("displayInfo");
+    if (existingDisplay) {
+        existingDisplay.remove();
+    }
 
     const formDiv = document.getElementById("formDiv");
     formDiv.setAttribute("class", "col-12 col-lg-4 mb-4");
     formDiv.style.minWidth = "300px";
 
-    // displayInfo с нормален grid, без flex
     const displayInfo = document.createElement("div");
     displayInfo.setAttribute("id", "displayInfo");
     displayInfo.setAttribute("class", "col-lg-8");
 
-    // Вътрешна карта
     const card = document.createElement("div");
     card.setAttribute("class", "card shadow-sm");
 
@@ -89,12 +124,10 @@ function setDisplay() {
     title.setAttribute("class", "card-title");
     title.textContent = "Account Info";
 
-    // Ред за двете колони
     const infoRow = document.createElement("div");
     infoRow.setAttribute("class", "row");
     infoRow.setAttribute("id", "infoRow");
 
-    // SOLO QUEUE
     const soloCol = document.createElement("div");
     soloCol.setAttribute("class", "col-md-6 mb-3");
     soloCol.setAttribute("id", "soloQ");
@@ -106,7 +139,6 @@ function setDisplay() {
     soloBox.appendChild(soloTitle);
     soloCol.appendChild(soloBox);
 
-    // FLEX QUEUE
     const flexCol = document.createElement("div");
     flexCol.setAttribute("class", "col-md-6 mb-3");
     flexCol.setAttribute("id", "flexQ");
@@ -118,17 +150,14 @@ function setDisplay() {
     flexBox.appendChild(flexTitle);
     flexCol.appendChild(flexBox);
 
-    // Добавяме колони в реда
     infoRow.appendChild(soloCol);
     infoRow.appendChild(flexCol);
 
-    // Сглобяваме всичко
     cardBody.appendChild(title);
     cardBody.appendChild(infoRow);
     card.appendChild(cardBody);
     displayInfo.appendChild(card);
 
-    // Добавяме в formRow
     document.getElementById("formRow").appendChild(displayInfo);
 }
 

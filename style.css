@@ -170,6 +170,13 @@ footer {
 body {
     padding-bottom: 80px;
 }
+.footer-content {
+    height: auto;
+    padding: 10px 0;
+    background-color: transparent;
+    text-align: center;
+    color: white;
+}
 
 
 
